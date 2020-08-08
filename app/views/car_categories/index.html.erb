@@ -1,3 +1,9 @@
-<% @car_categories.each do |category| %>
-  <%= link_to category.name, car_category_path(id: category.id) %>
+<% if @car_categories.present? %>
+  <% @car_categories.each do |category| %>
+    <%= link_to category.name, car_category_path(id: category.id) %>
+  <% end %>
+<% else %>
+  <%= 'Nenhuma categoria cadastrada' %>
 <% end %>
+
+<%= link_to 'Voltar', root_path %>
