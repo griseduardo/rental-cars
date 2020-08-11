@@ -1,9 +1,9 @@
-<% if @subsidiaries.present? %>
-  <% @subsidiaries.each do |subsidiary| %>
-    <%= link_to subsidiary.name, subsidiary_path(id: subsidiary.id) %>
-  <% end %>
-<% else %>
-  <%= 'Nenhuma filial cadastrada' %>
+<%= link_to 'Voltar', root_path %>
+
+<% @subsidiaries.each do |subsidiary| %>
+  <%= link_to subsidiary.name, subsidiary %>
 <% end %>
 
-<%= link_to 'Voltar', root_path %>
+<% if @subsidiaries.empty? %>
+  <h3>Nenhuma filial cadastrada</h3>
+<% end %>
