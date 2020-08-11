@@ -1,0 +1,17 @@
+<%= form_with model: @subsidiary, local: true do |f| %>
+  <div>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :cnpj, 'CNPJ' %>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div>
+    <%= f.label :address, 'Endereço' %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>
