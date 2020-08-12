@@ -2,8 +2,8 @@
 
 <h1><%= @subsidiary.name %></h1>
 <dl>
-  <dt>CNPJ</dt>
+  <dt><%= Subsidiary.human_attribute_name(:cnpj) %></dt>
   <dd><%= @subsidiary.cnpj %></dd>
-  <dt>Endereço</dt>
+  <dt><%= Subsidiary.human_attribute_name(:address) %></dt>
   <dd><%= @subsidiary.address %></dd>
 </dl>
