@@ -3,7 +3,8 @@
 <%= link_to 'Registrar uma nova filial', new_subsidiary_path %>
 
 <% @subsidiaries.each do |subsidiary| %>
-  <%= link_to subsidiary.name, subsidiary %>
+  <h3><%= link_to subsidiary.name, subsidiary %></h3>
+  <p><%= subsidiary.address %></p>
 <% end %>
 
 <% if @subsidiaries.empty? %>
