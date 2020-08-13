@@ -1,5 +1,7 @@
 <%= link_to 'Voltar', car_categories_path %>
 
+<%= link_to 'Editar', edit_car_category_path(@car_category) %>
+
 <h1><%= @car_category.name %></h1>
 <dl>
   <dt><%= CarCategory.human_attribute_name(:daily_rate) %></dt>
