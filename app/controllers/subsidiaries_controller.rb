@@ -12,8 +12,12 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
-    @subsidiary = Subsidiary.create(subsidiary_params)
-    redirect_to @subsidiary
+    @subsidiary = Subsidiary.new(subsidiary_params)
+    if @subsidiary.save
+      redirect_to @subsidiary
+    else
+      render :new
+    end
   end
 
   private

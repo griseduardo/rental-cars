@@ -2,11 +2,11 @@ require 'rails_helper'
 
 feature 'Admin view subsidiaries' do
   scenario 'successfully' do
-    Subsidiary.create!(name: 'Paulista', cnpj: '18.302.719/0001-18', 
+    Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
-    Subsidiary.create!(name: 'Vila Mariana', cnpj: '23.302.776/0001-02', 
+    Subsidiary.create!(name: 'Vila Mariana', cnpj: '70.189.752/0001-28', 
                        address: 'Av Sena Madureira, 268')
-    Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '83.104.889/0001-11', 
+    Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '52.172.478/0001-00', 
                        address: 'Rua Ananias, 566')
 
     visit root_path
@@ -22,11 +22,11 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and view details' do
-    Subsidiary.create!(name: 'Paulista', cnpj: '18.302.719/0001-18', 
+    Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
-    Subsidiary.create!(name: 'Vila Mariana', cnpj: '23.302.776/0001-02', 
+    Subsidiary.create!(name: 'Vila Mariana', cnpj: '70.189.752/0001-28', 
                        address: 'Av Sena Madureira, 268')
-    Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '83.104.889/0001-11', 
+    Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '52.172.478/0001-00', 
                        address: 'Rua Ananias, 566')
 
     visit root_path
@@ -34,7 +34,7 @@ feature 'Admin view subsidiaries' do
     click_on 'Paulista'
 
     expect(page).to have_content('Paulista')
-    expect(page).to have_content('18.302.719/0001-18')
+    expect(page).to have_content('10.404.931/0001-09')
     expect(page).to have_content('Av Paulista, 177')
     expect(page).not_to have_content('Vila Mariana')
   end
@@ -47,7 +47,7 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to home page' do
-    Subsidiary.create!(name: 'Paulista', cnpj: '18.302.719/0001-18', 
+    Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
     
     visit root_path
@@ -58,7 +58,7 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to subsidiaries page' do
-    Subsidiary.create!(name: 'Paulista', cnpj: '18.302.719/0001-18', 
+    Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
 
     visit root_path
