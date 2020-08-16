@@ -46,8 +46,13 @@ feature 'Admin view car model' do
     expect(page).to have_content('Flex')
     expect(page).not_to have_content('Onix')
     expect(page).not_to have_content('Chevrolet')
+    expect(page).to have_link('Voltar', href: car_models_path)
   end
 
-  xscenario 'and nothing is registered' do
+  scenario 'and nothing is registered' do
+    visit root_path
+    click_on 'Modelos de carro'
+
+    expect(page).to have_content('Nenhum modelo de carro cadastrado')
   end
 end
