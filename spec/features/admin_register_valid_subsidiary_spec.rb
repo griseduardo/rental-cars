@@ -34,12 +34,25 @@ feature 'Admin register valid subsidiary' do
     click_on 'Filiais'
     click_on 'Registrar uma nova filial'
     fill_in 'Nome', with: 'Vila Leopoldo'
-    fill_in 'CNPJ', with: '83.104.89/0001-11'
+    fill_in 'CNPJ', with: '52.172.47/0001-00'
     fill_in 'Endereço', with: 'Rua Jaí, 10'
     click_on 'Enviar'
 
     expect(Subsidiary.count).to eq 0
     expect(page).to have_content('não possui o tamanho esperado (18 caracteres)', count: 1)
+  end
+
+  scenario 'and cnpj length is 18 but does includes one or more invalid character(s)' do
+    visit root_path
+    click_on 'Filiais'
+    click_on 'Registrar uma nova filial'
+    fill_in 'Nome', with: 'Vila Leopoldo'
+    fill_in 'CNPJ', with: '52.172*478/0001w00'
+    fill_in 'Endereço', with: 'Rua Jaí, 10'
+    click_on 'Enviar'
+
+    expect(Subsidiary.count).to eq 0
+    expect(page).to have_content('os caracteres aceitos são: números(0 a 9), ponto(.), barra(/) e traço(-)', count: 1)
   end
 
   scenario 'and cnpj is not valid' do
