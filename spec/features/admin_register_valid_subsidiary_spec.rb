@@ -42,7 +42,7 @@ feature 'Admin register valid subsidiary' do
     expect(page).to have_content('não possui o tamanho esperado (18 caracteres)', count: 1)
   end
 
-  scenario 'and cnpj length is 18 but does includes one or more invalid character(s)' do
+  scenario 'and cnpj length is 18 but it includes one or more invalid character(s)' do
     visit root_path
     click_on 'Filiais'
     click_on 'Registrar uma nova filial'
