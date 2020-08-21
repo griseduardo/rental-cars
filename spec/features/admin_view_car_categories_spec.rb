@@ -112,4 +112,13 @@ feature 'Admin view car categories' do
     expect(page).to have_link('Onix')
     expect(page).to have_content('2020')
   end
+
+  scenario 'must be logged in to view details' do
+    top = CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
+                              third_party_insurance: 10.5)
+
+    visit car_category_path(top)
+
+    expect(current_path).to eq new_user_session_path
+  end
 end
