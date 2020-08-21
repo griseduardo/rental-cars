@@ -6,15 +6,7 @@
 
 <%= link_to 'Voltar', root_path %>
 
-<% @car_models.each do |car_model| %>
-  <div>
-    <h3><%= link_to "#{car_model.name} - #{car_model.year}", car_model %></h3>
-    <ul>
-      <li><%= car_model.manufacturer %></li>
-      <li><%= car_model.car_category.name %></li>
-    </ul>    
-  </div>
-<% end %>
+<%= render @car_models %>
 
 <% if @car_models.empty? %>
   <h3>Nenhum modelo de carro cadastrado</h3>
