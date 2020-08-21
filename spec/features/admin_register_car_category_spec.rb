@@ -41,6 +41,7 @@ feature 'Admin register car categories' do
     click_on 'Enviar'
 
     expect(current_path).to eq car_category_path(CarCategory.last)
+    expect(page).to have_content('Categoria de carro criada com sucesso!')
     expect(page).to have_content('Top')
     expect(page).to have_content('R$ 100,00')
     expect(page).to have_content('R$ 50,00')

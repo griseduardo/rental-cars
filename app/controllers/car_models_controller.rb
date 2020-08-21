@@ -17,7 +17,7 @@ class CarModelsController < ApplicationController
   def create
     @car_model = CarModel.new(car_model_params)
     if @car_model.save
-      redirect_to @car_model
+      redirect_to @car_model, notice: 'Modelo de carro criado com sucesso!'
     else
       @car_categories = CarCategory.all
       render :new

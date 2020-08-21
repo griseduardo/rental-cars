@@ -27,6 +27,7 @@ feature 'Admin register car model' do
     fill_in 'Tipo de combustível', with: 'Flex'
     click_on 'Enviar'
 
+    expect(page).to have_content('Modelo de carro criado com sucesso!')
     expect(page).to have_content('Ka')
     expect(page).to have_content('2019')
     expect(page).to have_content('Ford')
