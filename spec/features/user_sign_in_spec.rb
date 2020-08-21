@@ -29,15 +29,20 @@ feature 'User sign in' do
     expect(page).not_to have_link 'Entrar'
   end
 
-  xscenario 'and sign out' do
-    # Arrange
-    # Cria um user
+  scenario 'and sign out' do
+    User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                 password: '12345678')  
+      
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: 'joao@email.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Entrar'
+    click_on 'Sair'
 
-
-    # Act
-    #Faz login e .... clica no SAIR
-
-    # Assert
-    #Inverte as expectativas do sign in
+    expect(page).to have_link 'Entrar'
+    expect(page).not_to have_content 'João Almeida'
+    expect(page).not_to have_content 'Login efetuado com sucesso'
+    expect(page).not_to have_link 'Sair'
   end
 end
