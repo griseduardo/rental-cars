@@ -1,14 +1,25 @@
 require 'rails_helper'
 
 feature 'Admin view subsidiaries' do
+  scenario 'must be signed in' do
+    visit root_path
+    click_on 'Filiais'
+
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+  end
+
   scenario 'successfully' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
     Subsidiary.create!(name: 'Vila Mariana', cnpj: '70.189.752/0001-28', 
                        address: 'Av Sena Madureira, 268')
     Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '52.172.478/0001-00', 
                        address: 'Rua Ananias, 566')
-
+    
+    user_login(user)
     visit root_path
     click_on 'Filiais'
 
@@ -22,6 +33,8 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and view details' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
     Subsidiary.create!(name: 'Vila Mariana', cnpj: '70.189.752/0001-28', 
@@ -29,6 +42,7 @@ feature 'Admin view subsidiaries' do
     Subsidiary.create!(name: 'Vila Leopoldo', cnpj: '52.172.478/0001-00', 
                        address: 'Rua Ananias, 566')
 
+    user_login(user)
     visit root_path
     click_on 'Filiais'
     click_on 'Paulista'
@@ -40,6 +54,10 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and no subsidiaries are created' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
+    
+    user_login(user)                    
     visit root_path
     click_on 'Filiais'
 
@@ -47,9 +65,12 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to home page' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
     
+    user_login(user)
     visit root_path
     click_on 'Filiais'
     click_on 'Voltar'
@@ -58,9 +79,12 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to subsidiaries page' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
                        address: 'Av Paulista, 177')
 
+    user_login(user)
     visit root_path
     click_on 'Filiais'
     click_on 'Paulista'

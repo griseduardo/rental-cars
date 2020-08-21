@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 feature 'Admin view car model' do
+  scenario 'must be signed in' do
+    visit root_path
+    click_on 'Modelos de carro'
+
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+  end
+
   scenario 'and view list' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50, 
                                        third_party_insurance: 20)
     CarModel.create!(name: 'Ka', year: 2019, manufacturer: 'Ford', 
@@ -11,6 +21,7 @@ feature 'Admin view car model' do
                      motorization: '1.0', car_category: car_category,
                      fuel_type: 'Flex')
 
+    user_login(user)
     visit root_path
     click_on 'Modelos de carro'
 
@@ -25,6 +36,8 @@ feature 'Admin view car model' do
   end
 
   scenario 'and view details' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
     car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50, 
                                        third_party_insurance: 20)
     CarModel.create!(name: 'Ka', year: 2019, manufacturer: 'Ford', 
@@ -34,6 +47,7 @@ feature 'Admin view car model' do
                      motorization: '1.0', car_category: car_category,
                      fuel_type: 'Flex')
 
+    user_login(user)
     visit root_path
     click_on 'Modelos de carro'
     click_on 'Ka - 2019'
@@ -50,6 +64,10 @@ feature 'Admin view car model' do
   end
 
   scenario 'and nothing is registered' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+                        password: '12345678')
+
+    user_login(user)
     visit root_path
     click_on 'Modelos de carro'
 

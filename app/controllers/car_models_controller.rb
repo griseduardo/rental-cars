@@ -1,4 +1,6 @@
 class CarModelsController < ApplicationController
+  before_action :authenticate_user!, only: [ :index, :show, :new, :create ]
+
   def index
     @car_models = CarModel.all        
   end
