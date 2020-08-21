@@ -92,6 +92,6 @@ feature 'Admin register valid subsidiary' do
     click_on 'Enviar'
 
     expect(Subsidiary.count).to eq 0
-    expect(page).to have_content('não é válido', count: 1)
+    expect(page).to have_content('CNPJ não é válido', count: 1)
   end
 end
