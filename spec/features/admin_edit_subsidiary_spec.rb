@@ -104,7 +104,7 @@ feature 'Admin edits subsidiary' do
     fill_in 'Endereço', with: 'Av Paulista, 177'
     click_on 'Enviar'
 
-    expect(page).to have_content('os caracteres aceitos são: números(0 a 9), ponto(.), barra(/) e traço(-)', count: 1)
+    expect(page).to have_content('os caracteres aceitos para CNPJ são: números(0 a 9), ponto(.), barra(/) e traço(-)', count: 1)
   end
 
   scenario 'and cnpj is not valid' do

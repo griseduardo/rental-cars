@@ -14,7 +14,8 @@ feature 'Admin view clients' do
   end
 
   scenario 'must be logged in to view client details' do
-    client = Client.create!(name: 'Fulano Sicrano', cpf: '675.623.640-79', email: 'test@client.com')
+    client = Client.create!(name: 'Fulano Sicrano', cpf: '675.623.640-79', 
+                            email: 'test@client.com')
 
     visit client_path(client)
 

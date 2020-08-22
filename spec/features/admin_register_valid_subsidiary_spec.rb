@@ -39,7 +39,7 @@ feature 'Admin register valid subsidiary' do
     fill_in 'Endereço', with: 'Rua Jaí, 10'
     click_on 'Enviar'
 
-    expect(page).to have_content('já está em uso')
+    expect(page).to have_content('CNPJ já está em uso')
   end
 
   scenario 'and cnpj length must be 18' do
@@ -56,7 +56,7 @@ feature 'Admin register valid subsidiary' do
     click_on 'Enviar'
 
     expect(Subsidiary.count).to eq 0
-    expect(page).to have_content('não possui o tamanho esperado (18 caracteres)', count: 1)
+    expect(page).to have_content('CNPJ não possui o tamanho esperado (18 caracteres)', count: 1)
   end
 
   scenario 'and cnpj length is 18 but it includes one or more invalid character(s)' do
@@ -73,7 +73,7 @@ feature 'Admin register valid subsidiary' do
     click_on 'Enviar'
 
     expect(Subsidiary.count).to eq 0
-    expect(page).to have_content('os caracteres aceitos são: números(0 a 9), ponto(.), barra(/) e traço(-)', count: 1)
+    expect(page).to have_content('os caracteres aceitos para CNPJ são: números(0 a 9), ponto(.), barra(/) e traço(-)', count: 1)
   end
 
   scenario 'and cnpj is not valid' do
