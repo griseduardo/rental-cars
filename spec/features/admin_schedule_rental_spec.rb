@@ -28,4 +28,13 @@ feature 'Admin schedule rental' do
     expect(page).to have_content('R$ 600,00')
     expect(page).to have_content('Agendamento realizado com sucesso!')
   end
+
+  xscenario 'must fill in all fields' do
+  end
+
+  scenario 'must be logged in to schedule rental' do
+    visit new_rental_path
+
+    expect(current_path).to eq new_user_session_path
+  end
 end
