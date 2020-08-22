@@ -3,10 +3,8 @@ require 'rails_helper'
 feature 'Admin view subsidiaries' do
   scenario 'must be signed in' do
     visit root_path
-    click_on 'Filiais'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Filiais')
   end
 
   scenario 'successfully' do
@@ -91,5 +89,20 @@ feature 'Admin view subsidiaries' do
     click_on 'Voltar'
 
     expect(current_path).to eq subsidiaries_path
+  end
+
+  scenario 'must be logged in to view subsidiaries list' do
+    visit subsidiaries_path
+
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario 'must be logged in to view subsidiary details' do
+    paulista = Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
+                       address: 'Av Paulista, 177')
+
+    visit subsidiary_path(paulista)
+
+    expect(current_path).to eq new_user_session_path
   end
 end

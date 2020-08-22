@@ -3,10 +3,8 @@ require 'rails_helper'
 feature 'Admin register valid subsidiary' do
   scenario 'must be signed in' do
     visit root_path
-    click_on 'Filiais'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Filiais')
   end
 
   scenario 'and attributes cannot be blank' do

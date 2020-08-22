@@ -10,9 +10,9 @@
   <h2>Bem vindo ao sistema de gestão de locação</h2>
 </header>
 
-<%= link_to 'Filiais', subsidiaries_path %>
 <%= link_to 'Modelos de carro', car_models_path %>
 <% if user_signed_in? %>
   <%= link_to 'Categorias', car_categories_path %>
+  <%= link_to 'Filiais', subsidiaries_path %>
   <%= link_to 'Locações', rentals_path %>
 <% end %>

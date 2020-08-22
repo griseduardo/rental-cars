@@ -3,10 +3,8 @@ require 'rails_helper'
 feature 'Admin edits subsidiary' do
   scenario 'must be signed in' do
     visit root_path
-    click_on 'Filiais'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Filiais')
   end
 
   scenario 'successfully' do
@@ -126,5 +124,14 @@ feature 'Admin edits subsidiary' do
     click_on 'Enviar'
 
     expect(page).to have_content('não é válido', count: 1)
+  end
+
+  scenario 'must be logged in to edit subsidiary' do
+    paulista = Subsidiary.create!(name: 'Paulista', cnpj: '10.404.931/0001-09', 
+                       address: 'Av Paulista, 177')
+
+    visit edit_subsidiary_path(paulista)
+
+    expect(current_path).to eq new_user_session_path
   end
 end
