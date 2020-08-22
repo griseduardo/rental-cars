@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin view rentals' do
-  scenario 'must  be logged in to view rentals' do
+  scenario 'must be logged in to view rentals' do
     visit root_path
 
     expect(page).not_to have_link('Locações')
