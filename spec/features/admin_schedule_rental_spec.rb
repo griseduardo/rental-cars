@@ -29,7 +29,20 @@ feature 'Admin schedule rental' do
     expect(page).to have_content('Agendamento realizado com sucesso!')
   end
 
-  xscenario 'must fill in all fields' do
+  scenario 'must fill in all fields' do
+    user = User.create!(name: 'Lorem Ipsum', email: 'lorem@ipsum.com', 
+                        password: '12345678')
+
+    login_as user, scope: :user
+    visit root_path
+    click_on 'Locações'
+    click_on 'Agendar nova locação'
+    click_on 'Agendar'
+    
+    expect(page).to have_content('Data de início não pode ficar em branco')
+    expect(page).to have_content('Data de término não pode ficar em branco')
+    expect(page).to have_content('Cliente é obrigatório(a)')
+    expect(page).to have_content('Categoria de carro é obrigatório(a)')
   end
 
   scenario 'must be logged in to schedule rental' do

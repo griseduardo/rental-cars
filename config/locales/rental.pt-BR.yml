@@ -1,0 +1,14 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      rental: Locação
+    attributes:
+      rental:
+        start_date: Data de início
+        end_date: Data de término
+        client: Cliente
+        client_id: Cliente
+        car_category: Categoria de carro
+        car_category_id: Categoria de carro
+        total: Previsão de valor
