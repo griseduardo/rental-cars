@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :car_categories
-  resources :subsidiaries
+  resources :subsidiaries, only: [:index, :show, :new, :create, :edit, :update]
   resources :car_models, only: [:index, :show, :new, :create]
   resources :rentals, only: [:index, :show, :new, :create]
 end

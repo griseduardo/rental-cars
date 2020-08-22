@@ -1,16 +1,10 @@
 require 'rails_helper'
 
 feature 'Admin register car categories' do
-  scenario 'must be signed in' do
-    # Arrange
-
-    # Act
+  scenario 'must be logged in to view categories' do
     visit root_path
-    click_on 'Categorias'
 
-    # Assert
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Categorias')
   end
 
   scenario 'from index page' do
@@ -47,5 +41,11 @@ feature 'Admin register car categories' do
     expect(page).to have_content('R$ 50,00')
     expect(page).to have_content('R$ 10,00')
     expect(page).to have_link('Voltar')
+  end
+
+  scenario 'must be logged in to register new car category' do
+    visit new_car_category_path
+
+    expect(current_path).to eq new_user_session_path
   end
 end

@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 feature 'Admin deletes car category' do
-  scenario 'must be signed in' do
+  scenario 'must be logged in to view categories' do
     visit root_path
-    click_on 'Categorias'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Categorias')
   end
 
   scenario 'successfully' do

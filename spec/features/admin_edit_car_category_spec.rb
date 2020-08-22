@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 feature 'Admin edits car category' do
-  scenario 'must be signed in' do
-
+  scenario 'must be logged in to view categories' do
     visit root_path
-    click_on 'Categorias'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Categorias')
   end
 
   scenario 'successfully' do
@@ -71,5 +68,14 @@ feature 'Admin edits car category' do
     click_on 'Enviar'
 
     expect(page).to have_content('já está em uso')
+  end
+
+  scenario 'must be logged in to edit car category' do
+    top = CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
+                              third_party_insurance: 10.5)
+
+    visit edit_car_category_path(top)
+
+    expect(current_path).to eq new_user_session_path
   end
 end
