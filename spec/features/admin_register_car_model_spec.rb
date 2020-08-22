@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 feature 'Admin register car model' do
-  scenario 'must be signed in' do
+  scenario 'must be logged in to view car models' do
     visit root_path
-    click_on 'Modelos de carro'
 
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'Para continuar, faça login ou registre-se.'
+    expect(page).not_to have_link('Modelos de carro')
   end
 
   scenario 'successfully' do
@@ -52,5 +50,11 @@ feature 'Admin register car model' do
     expect(page).to have_content('Motorização não pode ficar em branco')
     expect(page).to have_content('Categoria de carro é obrigatório(a)')
     expect(page).to have_content('Tipo de combustível não pode ficar em branco')
+  end
+
+  scenario 'must be logged in to register new car model' do
+    visit new_car_model_path
+
+    expect(current_path).to eq new_user_session_path
   end
 end
