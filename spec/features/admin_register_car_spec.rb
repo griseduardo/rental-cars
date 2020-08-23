@@ -48,11 +48,11 @@ feature 'Admin register car' do
     click_on 'Cadastrar carro para frota'
     click_on 'Enviar'
 
-    expect(page).to have_content('License plate não pode ficar em branco')
-    expect(page).to have_content('Color não pode ficar em branco')
-    expect(page).to have_content('Car model é obrigatório(a)')
-    expect(page).to have_content('Mileage não pode ficar em branco')
-    expect(page).to have_content('Subsidiary é obrigatório(a)')
+    expect(page).to have_content('Placa não pode ficar em branco')
+    expect(page).to have_content('Cor não pode ficar em branco')
+    expect(page).to have_content('Modelo de carro é obrigatório(a)')
+    expect(page).to have_content('Quilometragem não pode ficar em branco')
+    expect(page).to have_content('Filial é obrigatório(a)')
   end
 
   scenario 'must be logged in to register car' do

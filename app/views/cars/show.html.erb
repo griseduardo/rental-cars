@@ -1,20 +1,20 @@
 <h1>Carro</h1>
 
 <dl>
-  <dt><%= 'Placa' %></dt>
+  <dt><%= Car.human_attribute_name :license_plate %></dt>
   <dd><%= @car.license_plate %></dd>
-  <dt><%= 'Cor' %></dt>
+  <dt><%= Car.human_attribute_name :color %></dt>
   <dd><%= @car.color %></dd>
-  <dt><%= 'Modelo de carro' %></dt>
+  <dt><%= Car.human_attribute_name :car_model %></dt>
   <dd><%= @car.car_model.name %></dd>
   <dd><%= @car.car_model.year %></dd>
   <dd><%= @car.car_model.manufacturer %></dd>
   <dd><%= @car.car_model.motorization %></dd>
   <dd><%= @car.car_model.car_category.name %></dd>
   <dd><%= @car.car_model.fuel_type %></dd>
-  <dt><%= 'Quilometragem' %></dt>
+  <dt><%= Car.human_attribute_name :mileage %></dt>
   <dd><%= @car.mileage %></dd>
-  <dt><%= 'Filial' %></dt>
+  <dt><%= Car.human_attribute_name :subsidiary %></dt>
   <dd><%= @car.subsidiary.name %></dd>
   <dd><%= @car.subsidiary.cnpj %></dd>
   <dd><%= @car.subsidiary.address %></dd>
