@@ -22,6 +22,7 @@ feature 'Admin view rentals' do
                         password: '12345678')
     rental = Rental.create!(start_date: Date.current, end_date: 2.days.from_now,
                             client: client, user: user, car_category: car_category)
+   
     visit rental_path(rental)
 
     expect(current_path).to eq new_user_session_path

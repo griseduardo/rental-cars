@@ -1,0 +1,17 @@
+<% @car.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
+<%= form_with model: @car, local:true do |f| %>
+  <%= f.label :license_plate, 'Placa' %>
+  <%= f.text_field :license_plate %>
+  <%= f.label :color, 'Cor' %>
+  <%= f.text_field :color %>
+  <%= f.label :car_model_id, 'Modelo de carro' %>
+  <%= f.collection_select :car_model_id, @car_models, :id, :information %>
+  <%= f.label :mileage, 'Quilometragem' %>
+  <%= f.number_field :mileage %>
+  <%= f.label :subsidiary_id, 'Filial' %>
+  <%= f.collection_select :subsidiary_id, @subsidiaries, :id, :name %>
+  <%= f.submit 'Enviar' %>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>Carro</h1>
+
+<dl>
+  <dt><%= 'Placa' %></dt>
+  <dd><%= @car.license_plate %></dd>
+  <dt><%= 'Cor' %></dt>
+  <dd><%= @car.color %></dd>
+  <dt><%= 'Modelo de carro' %></dt>
+  <dd><%= @car.car_model.name %></dd>
+  <dd><%= @car.car_model.year %></dd>
+  <dd><%= @car.car_model.manufacturer %></dd>
+  <dd><%= @car.car_model.motorization %></dd>
+  <dd><%= @car.car_model.car_category.name %></dd>
+  <dd><%= @car.car_model.fuel_type %></dd>
+  <dt><%= 'Quilometragem' %></dt>
+  <dd><%= @car.mileage %></dd>
+  <dt><%= 'Filial' %></dt>
+  <dd><%= @car.subsidiary.name %></dd>
+  <dd><%= @car.subsidiary.cnpj %></dd>
+  <dd><%= @car.subsidiary.address %></dd>
+</dl>
