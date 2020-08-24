@@ -2,6 +2,7 @@ class RentalsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create] 
   
   def index
+    # @rentals = Rental.all
   end
 
   def show
@@ -24,6 +25,11 @@ class RentalsController < ApplicationController
       @car_categories = CarCategory.all
       render :new
     end
+  end
+
+  def search
+    @rentals = Rental.where(token: params[:q])
+    render :index
   end
 
   private
