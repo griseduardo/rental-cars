@@ -41,6 +41,25 @@ feature 'Admin register valid car category' do
     fill_in 'Seguro para terceiros', with: '10'
     click_on 'Enviar'
 
-    expect(page).to have_content('já está em uso')
+    expect(page).to have_content('Nome já está em uso')
+  end
+
+  scenario 'and daily rate, car insurance and third party insurance must not be negative' do
+    user = User.create!(name: 'João Almeida', email: 'joao@email.com', 
+    password: '12345678')
+    
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'Categorias'
+    click_on 'Registrar uma nova categoria'
+    fill_in 'Nome', with: 'Top'
+    fill_in 'Diária', with: -10
+    fill_in 'Seguro do carro', with: -50
+    fill_in 'Seguro para terceiros', with: -30
+    click_on 'Enviar'
+
+    expect(page).to have_content('Diária deve ser maior ou igual a 0')
+    expect(page).to have_content('Seguro do carro deve ser maior ou igual a 0')
+    expect(page).to have_content('Seguro para terceiros deve ser maior ou igual a 0')
   end
 end
