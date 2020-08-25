@@ -72,6 +72,6 @@ feature 'Admin register valid car' do
     click_on 'Enviar'
 
     expect(Car.count).to eq 0
-    expect(page).to have_content('Quilometragem não pode ser negativa', count: 1)
+    expect(page).to have_content('Quilometragem deve ser maior ou igual a 0', count: 1)
   end
 end
