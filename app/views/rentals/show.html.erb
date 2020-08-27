@@ -13,4 +13,6 @@
   <dd><%= @rental.car_category.name %></dd>
   <dt><%= Rental.human_attribute_name :total %></dt>
   <dd><%= number_to_currency @rental.total %></dd>
+  <dt><%= Rental.human_attribute_name :user %></dt>
+  <dd><%= @rental.user.email %></dd>
 </dl>
