@@ -1,18 +1,21 @@
-<dl>
-  <dt>Token</dt>
-  <dd><%= rental.token %></dd>
-  <dt><%= Rental.human_attribute_name :start_date %></dt>
-  <dd><%= l rental.start_date %></dd>
-  <dt><%= Rental.human_attribute_name :end_date %></dt>
-  <dd><%= l rental.end_date %></dd>
-  <dt><%= Rental.human_attribute_name :client %></dt>
-  <dd><%= rental.client.name %></dd>
-  <dd><%= rental.client.cpf %></dd>
-  <dd><%= rental.client.email %></dd>
-  <dt><%= Rental.human_attribute_name :car_category %></dt>
-  <dd><%= rental.car_category.name %></dd>
-  <dt><%= Rental.human_attribute_name :total %></dt>
-  <dd><%= number_to_currency rental.total %></dd>
-  <dt><%= Rental.human_attribute_name :user %></dt>
-  <dd><%= rental.user.email %></dd>
-</dl>
+<div>
+  <dl>
+    <dt>Token</dt>
+    <dd><%= rental.token %></dd>
+    <dt><%= Rental.human_attribute_name :start_date %></dt>
+    <dd><%= l rental.start_date %></dd>
+    <dt><%= Rental.human_attribute_name :end_date %></dt>
+    <dd><%= l rental.end_date %></dd>
+    <dt><%= Rental.human_attribute_name :client %></dt>
+    <dd><%= rental.client.name %></dd>
+    <dd><%= rental.client.cpf %></dd>
+    <dd><%= rental.client.email %></dd>
+    <dt><%= Rental.human_attribute_name :car_category %></dt>
+    <dd><%= rental.car_category.name %></dd>
+    <dt><%= Rental.human_attribute_name :total %></dt>
+    <dd><%= number_to_currency rental.total %></dd>
+    <dt><%= Rental.human_attribute_name :user %></dt>
+    <dd><%= rental.user.email %></dd>
+    <%= link_to 'Ver detalhes', rental %>
+  </dl>
+</div>
