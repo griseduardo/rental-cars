@@ -1,7 +1,7 @@
 class CarRentalsController < ApplicationController
   def new
     @rental = Rental.find(params[:rental_id])
-    @available_cars = Car.where(car_model: @rental.car_category.car_models)
+    @available_cars = @rental.car_category.cars
     @car_rental = CarRental.new
   end
 

@@ -22,9 +22,9 @@ feature 'User start rental' do
                             client: client, car_category: car_category_a, 
                             user: user)
     car = Car.create!(license_plate: 'ABC123', color: 'Prata', 
-                      car_model: model_ka, mileage: 0, subsidiary: subsidiary)
+                      car_model: model_ka, mileage: 0, subsidiary: subsidiary, status: :available)
     car_fusion = Car.create!(license_plate: 'XYZ9876', color: 'Azul', 
-                      car_model: model_fusion, mileage: 0, subsidiary: subsidiary)
+                      car_model: model_fusion, mileage: 0, subsidiary: subsidiary, status: :available)
     
     login_as user, scope: :user
     visit root_path
@@ -59,7 +59,7 @@ feature 'User start rental' do
                             client: client, car_category: car_category, 
                             user: schedule_user)
     car = Car.create!(license_plate: 'ABC123', color: 'Prata', 
-                      car_model: car_model, mileage: 0, subsidiary: subsidiary)
+                      car_model: car_model, mileage: 0, subsidiary: subsidiary, status: :available)
     user = User.create!(email: 'another@test.com', password: '12345678', 
                         name: 'Outra Pessoa')
 
@@ -90,5 +90,13 @@ feature 'User start rental' do
     expect(page).to have_content('RJ200100-10')
     expect(page).not_to have_link('Iniciar locação')
     expect(page).to have_content('01 de outubro de 2020, 12:30:45')
+
+    expect(car).to be_rented
+
+  end
+
+  scenario 'view only available cars' do
+    # todo: criar um teste onde existem 2 carros da mesma categoria mas 1 já esta rented
+    # somente o carro available pode aparecer no select ;)
   end
 end

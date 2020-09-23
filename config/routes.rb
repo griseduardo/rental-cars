@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :car_rentals, only: [ :new, :create]
     get 'search', on: :collection
   end
+
+  resources :car_rentals, only: [ :show ] do
+    post 'finish', on: :member
+  end
+  
   resources :clients, only: [:index, :show, :new, :create]
   resources :cars, only: [:index, :show, :new, :create]
 end

@@ -6,8 +6,6 @@ class Car < ApplicationRecord
   validates :license_plate, uniqueness: true
   validates :mileage, numericality: {:greater_than_or_equal_to => 0}
 
-  enum status: { available: 10, rented: 20, maintenance: 30 }
-
   def description
     "#{car_model.name} - #{color} - #{license_plate}"
   end
